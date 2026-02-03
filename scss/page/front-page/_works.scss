@@ -1,0 +1,240 @@
+@use '../../setting/config' as config;
+@use '../../setting/mixin' as mixin;
+
+/* WORKSのスタイル */
+.works {
+  background-color: #dfe7aa2b;
+  &__sectionTitle {
+    font-family:  config.$font-sawarabi;
+    color: #666;
+    font-size: 22px;
+    border-top: 2px solid #ddd;
+    border-bottom: 2px solid #ddd;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+  &__box {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(3, minmax(0, 1fr)); /* 最大3列 */
+    padding-top: 10px;
+    padding-bottom: 30px;    
+      @media (max-width: config.$breakPoint-pc) {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: 0 auto;
+      }
+    }
+  &__item {
+    max-width: 100%;
+    border: 4px dotted #ccc;
+    padding: 0.5rem 1rem 1rem;
+    margin-bottom: 1rem;
+      &[data-url]:not([data-url=""]) {
+        cursor: pointer;
+        transition: transform .2s ease, box-shadow .2s ease;
+          &:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+          }
+        }
+  }
+  &__category {
+    font-size: 0.75rem;
+    background-color: #767676;
+    display: inline;
+    color: #fff;
+    padding: 1px 4px 2.5px;
+  }
+  &__title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #666;
+    padding-top: 8px;
+    padding-bottom: 10px;
+    text-wrap: unset;
+  }
+  &__article.flex {
+    column-gap: 1.2rem;
+  }
+  &__images {
+    width: 100%;
+    @media screen and (max-width: config.$breakPoint-pc) {
+      width: 100% ;
+    }
+  }
+  &__image--dtp {
+    max-height: 400px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  }
+  &__text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  &__details {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-top: 1rem;
+      li {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        text-align: left;
+          &.works__skillItem {
+            font-size: 0.65rem;
+          }
+        }
+  }
+  &__skillsList {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    padding: 8px 0;
+  }
+  &__skills {
+    margin-top: auto;
+  }
+  &__skillItem {
+    background: #7b947bc2;
+    color: #fff;
+    padding: 0 3px 1px;
+  }
+  &__description a,
+  &__github a {
+    color: inherit;       // 通常時は親と同じ色
+    font-weight: bold;
+    text-decoration: underline;
+    transition: color .2s ease;
+      &:hover {
+        color: #3b82f6;
+      }
+  }
+
+}
+li.works__skillsItem {
+  font-size: 0.65rem;
+}
+
+/* WORKSアーカイブページのスタイル */
+.works--archive {
+  .section__title {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  .works__box {
+    display: block;
+  }
+  .works__header {
+    padding-top: 20px;
+    padding-left: 65px;
+    @media screen and (max-width: config.$breakPoint-pc) {
+      padding-top: 10px;
+      padding-left: 0px;
+    }
+  }
+  .works__header--dtp {
+    padding-top: 20px;
+    padding-left: 20px;
+    @media screen and (max-width: config.$breakPoint-pc) {
+      padding-top: 10px;
+      padding-left: 0px;
+    }
+  }
+  .works__body {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1rem;
+    @media screen and (max-width: config.$breakPoint-pc) {
+      flex-direction: column;
+      padding: 0;
+    }
+  }
+  .works__images {
+    width: 50%;
+    flex-shrink: 0;
+    @media screen and (max-width: config.$breakPoint-pc) {
+      width: 100% ;
+    }
+  }
+  /*------------------------------------------
+    画像が1枚のとき（従来）
+  ------------------------------------------*/
+  .works__image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /*------------------------------------------
+    画像が2〜4枚あるとき
+  ------------------------------------------*/
+  .works__imagesGroup {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+
+    /* 最大2列にしたい場合 */
+    .works__imageWrap {
+      flex: 1 1 calc(50% - 8px);
+    }
+
+    .works__imageSub {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  /* SP時は1列にしたい場合 */
+  @media (max-width: 768px) {
+    .works__imagesGroup .works__imageWrap {
+      flex-basis: 100%;
+    }
+  }
+  /* DTP画像のホバー拡大 */
+  .works__imageWrap {
+  position: relative;
+
+  img {
+    transition: transform .3s ease;
+    z-index: 1;
+    position: relative;
+  }
+
+  &:hover img {
+    transform: scale(2);
+    position: relative;
+    z-index: 10;
+  }
+}
+
+  .works__category {
+    font-size: 0.85rem;
+  }
+  .works__title {
+    font-size: 1.3rem;
+  }
+  .works__details {
+    row-gap: 15px;
+  }
+  .works__summary {
+    margin-bottom: auto;
+  }
+}
+
+#cursorTooltip {
+  position: fixed;
+  padding: 4px 8px;
+  background: rgba(183, 181, 181, 0.75);
+  color: #fff;
+  font-size: 10px;
+  border-radius: 4px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -150%);
+  transition: opacity 1s ease;
+  z-index: 9999;
+}

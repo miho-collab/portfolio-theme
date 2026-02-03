@@ -1,0 +1,10 @@
+@use 'setting/config';
+@use 'setting/mixin';
+
+@use 'base/reset';
+@use 'base/init';
+
+@use 'page/header';
+@use 'page/front-page';
+@use 'page/footer';
+

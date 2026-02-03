@@ -1,0 +1,175 @@
+@use '../setting/config' as config;
+@use '../setting/mixin' as mixin;
+
+/* ヘッダーのスタイル header.scss*/
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .25);
+  background-color: config.$color-base;
+    .innerWidth {
+    justify-content: space-between;
+    align-items: center;
+    color: config.$color-font;
+    padding: 13px 20px;
+      @media screen and (max-width: config.$breakPoint-pc) {
+        padding: 8px 10px;
+      }
+    }
+    &__logoLink {
+      display: flex;
+      align-items: center;
+      text-decoration: none; // 下線を消す
+      color: inherit;        // 文字色を維持する
+    }
+    &__logoImage {
+      max-width: 40px;
+      overflow: hidden;
+        @media screen and (max-width: config.$breakPoint-pc) {
+          max-width: 30px;
+        }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    &__logoTittle {
+      font-family: config.$font-klee ;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin: 0;
+      margin-right: auto;
+      padding-right: 20px;
+      padding-left: 10px;
+        @media screen and (max-width: config.$breakPoint-pc) {
+          font-size: 16px;
+          letter-spacing: 0em;
+      }
+    }
+    &__name {
+      letter-spacing: -0.02em;
+        @media screen and (max-width: config.$breakPoint-pc) {
+          font-size: 16px;
+        letter-spacing: -0.02em;
+        }
+    }      
+    &__disc {
+      display: block;
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.4;
+      text-shadow: none;
+      padding-left: 20px;
+      letter-spacing: 0;
+        @media screen and (max-width: config.$breakPoint-pc) {
+          font-size: 12px;
+          padding-left: 0;
+        }
+        @media screen and (max-width: 355px) {
+          display: none;
+        }
+    }    
+    &__nav .menu {
+      font-size: 16px;
+      display: flex;
+      column-gap: 15px;
+      letter-spacing: -0.01em;
+      margin-bottom: 0;
+    } 
+
+  /* PCサイズのときはハンバーガーもSPメニューも非表示 */
+  &__hamburger {
+    display: none;
+  }
+
+  &__spNav {
+    display: none;
+  }
+
+  @media screen and (max-width: config.$breakPoint-pc) {
+    /* PCナビは消す */
+    &__nav .menu {
+      display: none;
+    }
+
+    /* ハンバーガー（SPでだけ表示） */
+    &__hamburger {
+      position: relative;
+      width: 33px;
+      height: 25px;
+      cursor: pointer;
+      display: inline-block;
+      transition: all .5s;
+      box-sizing: border-box;
+      z-index: 1001;
+    }
+
+    &__hamburgerLine {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background-color: #999;
+      border-radius: 4px;
+      display: inline-block;
+      transition: all .5s;
+      box-sizing: border-box;
+
+      &:nth-of-type(1) {
+        top: 0;
+      }
+      &:nth-of-type(2) {
+        top: 11px;
+      }
+      &:nth-of-type(3) {
+        bottom: 0;
+      }
+    }
+
+    &__hamburger--active {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+
+      .header__hamburgerLine:nth-of-type(1) {
+        -webkit-transform: translateY(11px) rotate(-45deg);
+        transform: translateY(11px) rotate(-45deg);
+      }
+      .header__hamburgerLine:nth-of-type(2) {
+        -webkit-transform: translateY(0) rotate(45deg);
+        transform: translateY(0) rotate(45deg);
+      }
+      .header__hamburgerLine:nth-of-type(3) {
+        opacity: 0;
+      }
+    }
+
+    /* =============================
+      SPナビ（右からスライドイン）
+       ============================= */
+    &__spNav {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 140px;
+      height: 100vh;
+      font-size: 20px;
+      padding: 120px 24px 24px;
+      background-color: #b8c4bc; // 薄緑グレー
+      transform: translateX(100%); // 最初は画面外
+      transition: transform .3s ease;
+      z-index: 1000;
+      display: block; // 開閉は transform で管理
+    }
+
+    &__spNav--open {
+      transform: translateX(0); // スライドイン
+    }
+
+    &__spNav .menu a {
+      color: #fff;
+    }
+  }
+}
