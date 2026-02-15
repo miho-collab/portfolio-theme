@@ -1,0 +1,50 @@
+// ** 初期設定
+// * サイト共通の値を変数で定義
+
+// ブレイクポイント
+$breakPoint-pc: 768px;
+$breakPoint-sp: 767px;
+
+// 画像格納ディレクトリ
+$imgPath: '../img/'; //出力する時にインターポレーション（補間）を行う #{config.$imgPath}
+
+// PC最小表示幅
+$inner: 1000px;
+
+// サイトで使用する色
+$color-base: #eee;
+$color-font: #333;
+$color-main: #648e6c;
+$color-sub: #d5a880;
+
+// 基本書体
+$font: 'Noto Sans JP',
+-apple-system,
+BlinkMacSystemFont,
+'Helvetica Neue',
+'メイリオ',
+Meiryo,
+'Yu Gothic',
+YuGothic,
+sans-serif !default;
+
+// タイトル書体
+$font-klee: 'Klee One', cursive;
+$font-sawarabi: 'Sawarabi Gothic', sans-serif;
+
+// 基本フォントサイズ
+$fontSize-pc: 16px;
+$fontSize-sp: 14px;
+
+// 基本行間
+$lineHeight: 1.6;
+
+
+
+// ブレイクポイント
+$breakPoint-pc: 768px;
+$breakPoint-sp: 767px;
+
+// ヘッダーの高さ（fixedで固定にしたため）
+$headerHeight: 20px;
+$headerHeight-sp: 20px;

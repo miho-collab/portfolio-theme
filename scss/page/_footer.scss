@@ -1,0 +1,21 @@
+@use '../setting/config' as config;
+@use '../setting/mixin' as mixin;
+
+/* FOOTERのスタイル */
+.footer {
+  background-color: config.$color-base;
+  &__copyright {
+    text-align: center;
+    justify-content: center;
+    padding: 7px;
+  }
+  &__copyrightMark {
+    font-size: 14px;
+  }
+  &__copyrightText {
+    font-family: config.$font-klee;
+    font-size: 12px;
+    line-height: 1.8;
+    padding-left: 2px;
+    }
+}

@@ -1,0 +1,33 @@
+@use '../../setting/config' as config;
+@use '../../setting/mixin' as mixin;
+
+/* CONTACTのスタイル */
+.contact {
+  background-color: #e6c9b233;
+  .wpcf7 {
+    max-width: 500px;
+    margin: 0 auto;
+    }
+
+  .wpcf7 label .form-padding {
+    font-size: 18px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    display: inline-block;
+      @media screen and (max-width: config.$breakPoint-pc) {
+        font-size: 14px;
+        padding-top: 10px;
+        padding-bottom: 5px;
+      }
+  }
+  .wpcf7 .wpcf7-form-control {
+    padding: 10px;
+  }
+  input,
+  textarea {
+    width: 100%;
+  }
+  textarea {
+    margin-bottom: 30px;
+  }
+}

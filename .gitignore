@@ -1,0 +1,12 @@
+.DS_Store
+.DS_Storenode_modules
+node_modules/
+dist/
+build/
+*.log
+.vscode/*
+!.vscode/extensions.json
+.env
+*.local
+vendor/
+composer.lock

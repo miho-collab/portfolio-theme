@@ -1,0 +1,339 @@
+@use '../../setting/config' as config;
+@use '../../setting/mixin' as mixin;
+
+/* WORKSのスタイル */
+.works {
+  background-color: #dfe7aa2b;
+  &__sectionTitle {
+    font-family:  config.$font-sawarabi;
+    color: #666;
+    font-size: 22px;
+    text-align: center;
+    border-top: 2px solid #ddd;
+    border-bottom: 2px solid #ddd;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+      @media screen and (max-width: config.$breakPoint-pc) {
+        font-size: 20px;
+      } 
+  }
+  &__arrow {
+    padding-left: 20px;
+  }
+  &__box {
+    text-align: initial;
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* 最大3列 */
+    padding-top: 10px;
+    padding-bottom: 30px;    
+    @media (max-width: config.$breakPoint-pc) {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+  }
+  &__item {
+    display: flex;
+		flex-direction: column;
+		height: 100%;
+    max-width: 100%;
+    border: 4px dotted #ccc;
+    padding: 1rem;
+    cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease;
+    overflow: hidden;
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+      }
+  }
+  &__category {
+    font-size: 0.75rem;
+    background-color: #767676;
+    display: inline;
+    color: #fff;
+    padding: 1px 4px 2.5px;
+    margin-left: 20px;
+  }
+  &__subTitle {
+    font-size: 16px;
+    font-weight: normal;
+    color: #666;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 6px;
+      @media (max-width: config.$breakPoint-pc) {
+        font-size: 14px;
+      } 
+  }
+  &__mainTitle {
+    font-size: 24px;
+    font-weight: 500;
+    color: #666;
+    text-align: center;
+    padding-bottom: 18px;
+    white-space: pre;   /* 自動折り返しなし。改行はそのまま */
+	  overflow: hidden;   /* はみ出しを隠す（JS縮小とセット） */
+    @media (max-width: config.$breakPoint-pc) {
+      font-size: 20px;
+    }
+  }
+  &__article.flex {
+    column-gap: 1.2rem;
+  }
+  &__images {
+    width: 100%;
+    @media screen and (max-width: config.$breakPoint-pc) {
+      width: 100% ;
+    }
+  }
+  &__section--dtp img {
+    width: 100%;
+    max-width: 376px;
+    margin: 0 auto;
+  }
+  &__text{
+		display: flex;
+		flex: 1;
+	}
+  &__details {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    row-gap: 15px;
+    height: 100%;
+    padding-top: 1rem;
+  }
+  &__detailsItem  {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  text-align: left;
+  }
+  &__skillsList {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    padding-top: 8px;
+  }
+	&__skillsUsed{
+		margin-top: auto;
+	}
+  &__skillItem {
+    font-size: 0.65rem;
+    background: #7b947bc2;
+    color: #fff;
+    padding: 0 3px 1px;
+  }
+}
+/*-------------------------------------------------------------------------------------  
+  WORKSアーカイブページのスタイル
+----------------------------------------------------------------------------------------*/
+/* WORKSアーカイブページのスタイル */
+.blog {
+  .works {
+    .section__title {
+      text-align: center;
+      padding-top: 40px;
+      padding-bottom: 40px;
+      @media screen and (max-width: config.$breakPoint-pc) {
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+    }
+    @media screen and (max-width: config.$breakPoint-pc) {
+      &__sectionTitle {
+        font-size: 18px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        margin-bottom: 15px;
+      }
+    }
+    &__box {
+      display: block;
+      @media screen and (max-width: config.$breakPoint-pc) {
+        padding-bottom: 0;
+      }
+    }
+    &__item {
+      display: flex;
+      flex-direction: row;
+      gap: 1.5rem;
+      margin-bottom: 30px;
+      @media screen and (max-width: config.$breakPoint-pc) {
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 15px;
+      }
+    }
+    &__body {
+      flex: 1 1 0;
+      min-width: 0;
+      @media screen and (max-width: config.$breakPoint-pc) {
+        flex-direction: column;
+        padding: 0;
+      }
+    }
+    &__category {
+      margin-left: 20px;
+    }
+    &__subTitle {
+      padding-top: 0;
+    @media screen and (max-width: config.$breakPoint-pc) {
+        padding-top: 14px;
+      }  
+    }
+    &__summary {
+      margin-bottom: auto;
+    }
+    &__images {
+      width: 100%;
+      @media screen and (max-width: config.$breakPoint-pc) {
+        width: 100% ;
+      }
+    }
+    &__details {
+      padding-top: 28px;
+      @media screen and (max-width: config.$breakPoint-pc) {
+        padding-top: 0;
+      }
+    }
+    &__text {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+    /*------------------------------------------
+      画像が1枚のとき（従来）
+    ------------------------------------------*/
+    &__section--dtp .works__image {
+      width: 220px;
+      height: auto;
+      display: block;
+    }
+    /*------------------------------------------
+      画像が2〜4枚あるとき
+    ------------------------------------------*/
+    &__imagesGroup {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      /* 最大2列にしたい場合 */
+      .works__imageWrap {
+        flex: 1 1 calc(50% - 8px);
+        /* DTP画像のホバー拡大 */
+        position: relative;
+        img {
+          transition: transform .3s ease;
+          z-index: 1;
+          position: relative;
+        }
+        &:hover img {
+          transform: scale(2);
+          position: relative;
+          z-index: 10;
+        }
+        /* SP時は1列にしたい場合 */
+        @media screen and (max-width: config.$breakPoint-pc) {
+            flex-basis: 100%;
+        }
+      }
+      .works__imageSub {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+    }
+  }
+}
+/*-------------------------------------------------------------------------------------  
+  works-post 投稿個別ページのスタイル
+----------------------------------------------------------------------------------------*/
+// works-post 投稿個別ページのスタイル
+.post {
+  background-color: #fffbfb;
+  &__item {
+    max-width: 80%;
+    padding-top: 3rem;
+    margin: 0 auto;
+      @media screen and (max-width: config.$breakPoint-pc) {
+        padding-top: 2rem;
+      }
+  }
+  &__header {
+    color: #666;
+    margin-bottom: 40px;
+      @media screen and (max-width: config.$breakPoint-pc) {
+        margin-bottom: 30px;
+      }
+  }
+  .works__category {
+    font-size: 0.85rem;
+    display: block;
+    width: 80px;
+    margin-bottom: 30px;
+      @media screen and (max-width: config.$breakPoint-pc) {  
+        font-size: 0.7rem;
+        width: 60px;
+        margin-bottom: 18px;
+      }
+  }
+  &__title {
+    font-size: 38px;
+    padding-bottom: 10px;
+      @media screen and (max-width: config.$breakPoint-pc) {
+        font-size: 28px;
+      }
+  }
+  &__images img {
+    margin: 0 auto;
+  }
+  &__details {
+    padding: 50px 0;
+    margin: 0 auto;
+    @media screen and (max-width: config.$breakPoint-pc) {
+      padding: 30px 0 0;
+    }
+      p {
+        text-align: left;
+      }
+      dl {
+        display: flex;
+        text-align: left;
+        column-gap: 20px;
+        position: relative;
+        @media screen and (max-width: config.$breakPoint-pc) {
+          column-gap: 7px;
+        }
+      }
+      dt {
+        flex: 0 0 100px;
+        position: relative;
+        &::before {
+          content: "";
+          width: 2px;
+          height: 20px;  
+          border-radius: 10px;    
+          background-color: #e6d6d6;
+          position: absolute;
+          top: 3px;
+          left: 100%;
+          margin-left: -7px;
+        }
+        @media screen  and (max-width: config.$breakPoint-pc) {
+          flex: 0 0 90px;
+          &::before {
+            left: 100%;
+            margin-left: -10px;
+          }
+        }
+      }
+    }
+    &__detailsItem {
+      margin-bottom: 36px;
+    }
+    .works__skillsList {
+      padding: 0;
+    }
+}

@@ -1,0 +1,99 @@
+@use '../../setting/config' as config;
+@use '../../setting/mixin' as mixin;
+
+/* ABOUTのスタイル */
+.about {
+  background-color: #d9cde82b;
+    @media screen and (max-width: config.$breakPoint-pc) {
+      .section__title {
+        padding-bottom: 25px;
+      }
+    }
+  .innerWidth {
+    padding-bottom: 40px;
+  }
+  &__portraitImg {
+    margin: 0 auto;
+    width: 98px;
+  }
+  &__name {
+    font-size: 22px;
+  }
+  &__bio {
+    font-size: 18px;
+    line-height: 1.6;
+    padding-bottom: 10px;
+    max-height: 4.8em; // 3行分
+    overflow: hidden;
+    position: relative;
+    transition: max-height 0.3s ease;
+    &.is-open {
+      max-height: none;
+    }
+      @media screen and (max-width: config.$breakPoint-pc) {
+        font-size: 14px;
+        line-height: 1.6;
+        padding-bottom: 2px;
+      }
+  }
+  &__readmore {
+    display: inline-block;
+    background-color: #999;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 5px;
+    margin-top: 5px;
+  }
+
+  &__description {
+    max-width: 740px;
+    text-align: left;
+    padding: 20px;
+    margin: 0 auto;
+  }
+
+  // 閉じている状態（共通の初期状態）
+  &__description-wrapper {
+    overflow: hidden;
+    max-height: 0;
+  }
+
+  // 開くとき：ゆっくり（1.5s）
+  &__description-wrapper.is-opening {
+    transition: max-height 1.5s ease-in-out;
+    max-height: 1200px; // 全文が入るくらいの高さ
+  }
+
+  // 閉じるとき：速く（1.0s）
+  &__description-wrapper.is-closing {
+    transition: max-height 1s ease;
+    max-height: 0;
+  }
+  
+  &__subTitle {
+    font-family: "Klee One", cursive;
+    position: relative;
+    display: inline-block; /* タイトル幅に点線を合わせるポイント */
+    padding-bottom: 8px;   /* タイトルと点線の距離 */
+    margin-bottom: 20px;
+  }
+
+  &__subTitle::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px; /* 点線の太さ（高さ） */
+    /* 点線の設定：ここで大きさ・間隔・色を調整可能 */
+    background-image: radial-gradient(circle, #333 1.5px, transparent 1.5px);
+    background-size: 10px 4px; /* 横：点の間隔 ／ 縦：高さ */
+    background-repeat: repeat-x;
+  }
+
+  &__toolText {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,10 @@
+// サイトで使用する色
+@mixin bg-white {
+  background-color: rgba($color: #ffffff, $alpha: 0.5);
+}
+
+// サイトで使用する色
+@mixin white-outline {
+  color: #fff;
+  text-shadow: 0 0 5px #555, 0 0 5px #555;
+}

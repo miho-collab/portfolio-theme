@@ -1,0 +1,71 @@
+@use '../../setting/config' as config;
+@use '../../setting/mixin' as mixin;
+
+/* INTRODUCTIONのスタイル */
+.introduction {
+  color: #777;
+  text-align: center;
+  &__lead {
+  background-color: #e6eadaa3;
+  font-size: 20px;
+  color: #fff;
+  text-shadow: #000 1px 0 5px;
+  padding: 20px;
+  margin-top: 0;
+    span {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeInUp 0.3s ease forwards;    
+    }
+    @media screen and (max-width: config.$breakPoint-pc) {
+      font-size: 16px;
+    }
+  }
+  &__disc {
+    font-size: 16px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;   
+    word-break: keep-all;
+    line-break: strict; 
+      &.appear {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @media screen and (max-width: config.$breakPoint-pc) {
+        font-size: 14px;
+      }
+  }
+  &__disc1 {
+    background-color: #eeece5;
+  }
+  &__disc2 {
+    background-color: #f1eded;
+  }
+  &__disc3 {
+    background-color: #c1d0d745;
+  }
+  &__discLow {
+    padding: 10px 20px;
+  }
+}
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* introduction__lead
+PCでは改行しない */
+.u-spBreak {
+  display: none;
+}
+
+/* SPだけ改行を有効化（例：max-width: 767px） */
+@media (max-width: 767px) {
+  .u-spBreak {
+    display: inline;
+  }
+}

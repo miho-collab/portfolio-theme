@@ -1,0 +1,109 @@
+@use '../setting/config' as config;
+@use '../setting/mixin' as mixin;
+
+/* 全体のスタイル init.scss ------------------------------------
+レスポンシブ：2025年5月時点で一般的なタブレットサイズが縦で768px、縦で見るとモバイルデザイン、横で見るとPCデザインという設定なのでこれをブレイクポイントとする
+---------------------------------------------------------*/
+/* 基本 */
+body {
+  font-family: config.$font;
+  font-size: config.$fontSize-pc;
+  line-height: config.$lineHeight;
+  background: config.$color-base;
+  color: config.$color-font;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+    @media screen and (max-width: config.$breakPoint-pc) {
+      font-size: config.$fontSize-sp;
+    }
+  /* フッターを画面下部に固定するための設定 */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+} 
+.main {
+  flex: 1;  /* メインコンテンツが伸びる */
+}
+
+h1 {
+  font-size: 46px;
+    @media screen and (max-width: config.$breakPoint-pc) {
+      font-size: 26px;
+    }
+}
+h2 {
+  font-size: 40px;
+    @media screen and (max-width: config.$breakPoint-pc) {
+      font-size: 28px;
+    }
+}
+h3 {
+  font-size: 26px;
+    @media screen and (max-width: config.$breakPoint-pc) {
+      font-size: 18px;
+    }
+}
+h4 {
+  font-size: 22px;
+    @media screen and (max-width: config.$breakPoint-pc) {
+      font-size: 16px;
+    }
+}
+h5 {
+  font-size: 18px;
+    @media screen and (max-width: config.$breakPoint-pc) {
+      font-size: 14px;
+    }
+}
+h6 {
+  font-size: 14px;
+    @media screen and (max-width: config.$breakPoint-pc) {
+      font-size: 12px;
+    }
+}
+
+/* リンクa のスタイル */
+a {
+  text-decoration: none;
+  color: config.$color-font;
+}
+a:hover {
+  cursor: pointer;
+}
+
+/* リストスタイル */
+li {
+  list-style: none;
+}
+
+/* PCサイズ769以上なら.pc-noneを表示させない */
+.pc-none {
+  display: none;
+    @media screen and (max-width: config.$breakPoint-pc) {
+        display: block;
+    }
+}
+
+/* mobileサイズ768以下なら .sp-noneを表示.pc-noneを表示させる */
+.sp-none {
+  display: block;
+    @media screen and (max-width: config.$breakPoint-pc) {
+        display: none;
+    }
+}
+
+/* フレックスの設定 */
+.flex {
+  display: flex;
+}
+
+/* インナーの幅のサイズ */
+.innerWidth {
+  max-width: 1024px;
+  width: 100%;
+  margin: 0 auto;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+

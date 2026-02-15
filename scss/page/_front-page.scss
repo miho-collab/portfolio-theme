@@ -1,0 +1,47 @@
+@use '../setting/config' as config;
+@use '../setting/mixin' as mixin;
+
+@use 'front-page/introduction';
+@use 'front-page/about';
+@use 'front-page/works';
+@use 'front-page/skills';
+@use 'front-page/contact';
+
+/* フロントページのスタイル front-page.scss*/
+/*.main {
+  padding-top: config.$headerHeight;
+}*/
+.section {
+  padding-top: 20px;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  &__shortInner {
+    max-width: 687px;
+    padding: 30px 20px 60px;
+    margin: 0 auto;
+    @media screen and (max-width: 376px) {
+      padding: 20px 10px;
+    }
+  }
+  &__title {
+    @include mixin.white-outline;
+    font-family: config.$font-klee;
+    padding-top: 20px;
+    padding-bottom: 45px;
+    @media screen and (max-width: config.$breakPoint-pc) {
+      padding-bottom: 30px;
+    }
+  }
+}
+
+.mainContents {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.mainContents.appear {
+  opacity: 1;
+  transform: translateY(0);
+}

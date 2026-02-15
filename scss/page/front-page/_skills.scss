@@ -1,0 +1,53 @@
+@use '../../setting/config' as config;
+@use '../../setting/mixin' as mixin;
+
+/* SKILLSのスタイル */
+.skills {
+  background-color: #d0def233;
+  &__box {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 20px;
+    justify-content: center;
+  }
+  &__item {
+    width: 55px;
+  }
+  &__image {
+    width: 35px; 
+    height: 50px;
+    margin: 0 auto 6px;
+    display: flex;
+    align-items: center;      /* 縦中央 */
+    justify-content: center;  /* 横中央 */
+    img {
+      margin: 0 auto;
+    }
+  }
+  &__levelTitle {
+    font-size: 11px;
+    margin-bottom: 5px;
+  }
+  &__value {
+    font-size: 12px;
+    margin-bottom: 5px;
+    position: relative;
+    display: inline-block;
+  }
+  &__desc {
+    font-size: 12px;
+  }
+  &__wrap {
+    max-width: 260px;
+    padding: 5px;
+    margin: 0 auto;
+  }
+  &__levelDesc {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2px 0;
+    font-size: 14px;
+    text-align: left;
+  }
+}
